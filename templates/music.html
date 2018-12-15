@@ -1,0 +1,49 @@
+{% extends "base.html" %}
+
+{% block title %} | Music {% endblock %}
+
+{% block content %}
+  <div class="container">
+    <h1>Top Artists</h1>
+    <hr>
+
+    <table class="table">
+      <thead>
+          <th>Rank</th>
+          <th>Artist</th>
+          <th>Picture</th>
+      </thead>
+      <tbody>
+        {% for artist in artists %}
+        <tr>
+          <th>{{ artist.rank }}</th>
+          <th>{{artist.name }}</th>
+          <th><img src="{{ artist.img}}" alt="{{ artist.name }}"></th>
+        </tr>
+        {% endfor %}
+      </tbody>
+    </table>
+
+    <h1>Top Songs</h1>
+    <hr>
+    <table class="table">
+      <thead>
+          <th>Rank</th>
+          <th>Title</th>
+          <th>Artist</th>
+          <th>Picture</th>
+      </thead>
+      <tbody>
+        {% for song in songs %}
+        <tr>
+          <th>{{ song.rank }}</th>
+          <th>{{ song.title }}</th>
+          <th>{{ song.artist }}</th>
+          <th><img src="{{ song.img}}" alt="{{ song.title }}"></th>
+        </tr>
+        {% endfor %}
+      </tbody>
+    </table>
+
+  </div>
+{% endblock %}
