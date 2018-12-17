@@ -3,10 +3,11 @@
 {% block title %} | Music {% endblock %}
 
 {% block content %}
+  <h3 class="text-center">Top Artists</h3>
+
   <div class="container">
-    <h1>Top Artists</h1>
-    <table class="table" style="margin-left: -50px;">
-      <thead>
+    <table class="table">
+      <thead class="thead-dark">
           <th>Rank</th>
           <th>Artist</th>
           <th>Picture</th>
@@ -21,12 +22,14 @@
         {% endfor %}
       </tbody>
     </table>
+  </div>
 
-    <br>
+  <br>
 
-    <h1>Top Songs</h1>
-    <table class="table" style="margin-left: -50px;">
-      <thead>
+  <h3 class="text-center">Top Songs</h3>
+  <div class="container">
+    <table class="table">
+      <thead class="thead-dark">
           <th>Rank</th>
           <th>Title</th>
           <th>Artist</th>
