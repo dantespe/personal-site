@@ -12,9 +12,10 @@ app = Flask(__name__)
 @app.context_processor
 def load():
     g = git.Git('.')
+    commits = [i for i in g.log().split('commit') if i ]
     return {
         'now': datetime.now(),
-        'updated': g.log().split("Date:")[-1].strip().split('\n')[0].split(' -')[0]
+        'updated': commits[0].split("Date:")[-1].strip().split(" -")[0]
     }
 
 
