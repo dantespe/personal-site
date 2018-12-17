@@ -5,11 +5,11 @@
 {% block content %}
   {% for row in projects %}
   <div class="container">
-    <div class="row" style="padding: 25px 0px 0px 0px">
+    <div class="row" style="padding: 30px 0px 0px 0px">
       {% if row|length in [1, 3] %}
         <!-- row[0] -->
         <div class="col-lg">
-          <div class="card" style="width: 18rem; top: -22px">
+          <div class="card" style="width: 18rem; top: 0px">
             <a href={{ row[0].link }}><img class="card-img-top" src="{{ url_for('static', filename=row[0].img)}}" height=160 alt="Card image cap"></a>
             <div class="card-body">
               <h5 class="card-title"> {{ row[0].name }} </h5>
@@ -48,7 +48,7 @@
       {% else %}
           <!-- row[0] -->
           <div class="col-lg">
-            <div class="card" style="width: 18rem; top: -22px;">
+            <div class="card" style="width: 18rem; top: 0px;">
               <a href={{ row[0].link }}><img class="card-img-top" src="{{ url_for('static', filename=row[0].img)}}" height=160 alt="Card image cap"></a>
               <div class="card-body">
                 <h5 class="card-title"> {{ row[0].name }} </h5>
