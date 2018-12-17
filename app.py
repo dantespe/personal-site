@@ -3,6 +3,7 @@
 from flask import Flask
 from flask import render_template
 from datetime import datetime
+import git
 import requests
 import os
 
@@ -10,8 +11,10 @@ app = Flask(__name__)
 
 @app.context_processor
 def load():
+    g = git.Git('.')
     return {
-        'now': datetime.now()
+        'now': datetime.now(),
+        'updated': g.log().split("Date:")[-1].strip().split('\n')[0].split(' -')[0]
     }
 
 
