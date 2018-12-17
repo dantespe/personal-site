@@ -1,9 +1,12 @@
 # Welcome to my Personal Site
 
-
 Things to do:
-* random tab?
-* write about
 * add pic to landing page
+* Realign Projects
+* Tidy up Music Page
 * 404.html
-* Contact Fam
+* Start Blog (Two entries)
+* Rebrand instagram
+* Rebrand LinkedIn
+* Rebrand Github
+* Deploy

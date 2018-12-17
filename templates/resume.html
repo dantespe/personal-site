@@ -2,13 +2,6 @@
 
 {% block title %} | Resume {% endblock%}
 {% block content %}
-<br>
-<div style="margin-left: 5px">
-  <h2>Résumé</h2>
-  <hr style="margin-left: 5px; margin-right: 5px;">
-  <br>
-  <h4>Experience</h4>
-
   {% for job in jobs %}
   <div class="row justify-content-start no-gutters" style="padding: 8px 0px 8px 0px">
     <div class="col-lg-7">
@@ -50,5 +43,4 @@
   <div class="text-center">
     <p><a href="{{ url_for('static', filename="resume.pdf")}}">Looking for a downloadable version?</a></p>
   </div>
-</div>
 {% endblock %}

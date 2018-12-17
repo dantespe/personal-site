@@ -13,9 +13,13 @@ app = Flask(__name__)
 def load():
     g = git.Git('.')
     commits = [i for i in g.log().split('commit') if i ]
+    s = commits[0].split("Date:")[-1].strip().split(" -")[0]
+    updated = " ".join(s.split(" ")[:3])
+    updated += " " + s.split(" ")[-1]
+
     return {
         'now': datetime.now(),
-        'updated': commits[0].split("Date:")[-1].strip().split(" -")[0]
+        'updated': updated
     }
 
 
@@ -26,12 +30,16 @@ def page_not_found(e):
 
 @app.route("/")
 def index():
-    return render_template('about.html')
+    context = {
+        'header': "About"
+    }
+    return render_template('about.html', **context)
 
 
 @app.route("/resume")
 def resume():
     context = {
+        'header': "Resume",
         'jobs': []
     }
 
@@ -113,6 +121,7 @@ def resume():
 @app.route("/projects")
 def projects():
     context = {
+        'header': "Projects",
         'projects': [[]]
     }
 
@@ -148,6 +157,7 @@ def music():
     NUM_SONGS = 50
 
     context = {
+        'header': "My Music",
         'artists': [],
         'songs': []
     }
@@ -193,3 +203,37 @@ def music():
     print(response.url)
 
     return render_template("music.html", **context)
+
+
+@app.route("/contact")
+def contact():
+    context = {
+        "header": "Contact",
+        "contacts": []
+    }
+
+    # Instagram
+    context['contacts'].append({
+        "button": "fa-instagram",
+        "link": "https://www.instagram.com/dant____________/"
+    })
+
+    # Github
+    context['contacts'].append({
+        "button": "fa-github",
+        "link": "https://www.github.com/dantespe"
+    })
+
+    # LinkedIn
+    context['contacts'].append({
+        "button": "fa-linkedin",
+        "link": "https://www.linkedin.com/in/dante-spencer-290781b8/"
+    })
+
+    # Email
+    context['contacts'].append({
+        "button": "fa-envelope",
+        "link": "mailto:dantespe@umich.edu"
+    })
+
+    return render_template("contact.html", **context)
