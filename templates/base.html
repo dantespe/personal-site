@@ -44,6 +44,7 @@
   <body>
     <div style="margin-left: 25px; margin-right: 25px;">
       <br>
+      {% if error is not defined or not error %}
       <div class="container">
         <div class="row">
           <div class="col" style="margin-left: -60px">
@@ -55,6 +56,8 @@
         </div>
       </div>
       <hr>
+      {% endif %}
+    
       {% block content %}
       {% endblock %}
 

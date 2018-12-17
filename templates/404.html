@@ -1,1 +1,14 @@
-Wrong page fam
+{% extends "base.html"%}
+
+{% block content %}
+  <div class="alert alert-danger" role="alert">
+    <p><strong>Whoops!</strong> It looks like the page you're looking for cannot be found.</p>
+    Are your sure <a href="{{ url }}">{{ url }}<a> exists?
+  </div>
+  <div>
+    <p>
+      If you're still having trouble you can send me an email <a href="mailto:dantespe@umich.edu">here</a>.
+    </p>
+  </div>
+
+{% endblock %}

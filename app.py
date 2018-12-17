@@ -1,6 +1,6 @@
 #! /usr/bin/env python
 
-from flask import Flask
+from flask import Flask, request
 from flask import render_template
 from datetime import datetime
 import git
@@ -25,7 +25,11 @@ def load():
 
 @app.errorhandler(404)
 def page_not_found(e):
-    return render_template("404.html"), 404
+    context = {
+        'error': True,
+        'url': request.base_url
+    }
+    return render_template("404.html", **context), 404
 
 
 @app.route("/")
