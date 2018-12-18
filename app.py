@@ -5,6 +5,7 @@ from settings import Settings
 import os
 import requests
 import requests_toolbelt.adapters.appengine
+import gitdb
 
 # Use the App Engine Requests adapter. This makes sure that Requests uses
 # URLFetch.

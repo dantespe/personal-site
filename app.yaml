@@ -5,7 +5,8 @@ threadsafe: true
 skip_files:
   - "env/"
   - "__pycache__/"
-  - "*.pyc"
+  - "app.pyc"
+  - "settings.pyc"
 
 env_variables:
   FLASK_APP: "app.py"
