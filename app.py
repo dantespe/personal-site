@@ -166,6 +166,7 @@ def music():
     endpoint = "https://ws.audioscrobbler.com/2.0"
     api_key = Settings.get("LAST_FM_API_KEY")
     username = Settings.get("LAST_FM_USERNAME")
+    print(api_key, username)
 
     params = {
         'method': 'user.gettopartists',
