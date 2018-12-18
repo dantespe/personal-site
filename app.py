@@ -1,9 +1,10 @@
 #! /usr/bin/env python
 from flask import Flask, request, render_template
 from datetime import datetime
-
+from settings import Settings
 import os
 import requests
+
 
 app = Flask(__name__)
 
@@ -159,8 +160,8 @@ def music():
     }
 
     endpoint = "https://ws.audioscrobbler.com/2.0"
-    api_key = os.environ["LAST_FM_API_KEY"]
-    username = os.environ["LAST_FM_USERNAME"]
+    api_key = Settings.get("LAST_FM_API_KEY")
+    username = Settings.get("LAST_FM_USERNAME")
 
     params = {
         'method': 'user.gettopartists',
