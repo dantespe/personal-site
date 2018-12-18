@@ -22,4 +22,4 @@ handlers:
     static_dir: static
 
   - url: .*
-    script: app
+    script: app.app
