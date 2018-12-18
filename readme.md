@@ -7,3 +7,12 @@ Things to do:
 * Rebrand Github
 * Deploy
 * Update This ReadMe
+* Add logging 
+
+
+# Install Dependencies
+1. pip install flask gitpython requests
+
+# Copy LAST_FM Keys
+2. export LAST_FM_API_KEY="my_secret_key"
+2. export LAST_FM_USERNAME="my_username"
