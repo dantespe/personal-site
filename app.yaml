@@ -14,6 +14,8 @@ libraries:
     version: "0.12"
   - name: werkzeug
     version: "0.11.10"
+  - name: "ssl"
+    version: "2.7.11"
 
 handlers:
   - url: /static
