@@ -23,7 +23,7 @@ try:
 
 except:
     import os
-
+    
     class Settings():
         @staticmethod
         def get(name):

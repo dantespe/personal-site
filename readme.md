@@ -5,16 +5,12 @@ Things to do:
 * Rebrand instagram
 * Rebrand LinkedIn
 * Rebrand Github
-* Deploy
 * Update This ReadMe
 * Add logging
 * Fault tolerant music page
 * Remove `skip_files` in favor of `.gcloudignore`
+* Find out how to import google appengine
 
 
 # Install Dependencies
 1. pip install flask gitpython requests
-
-# Copy LAST_FM Keys
-2. export LAST_FM_API_KEY="my_secret_key"
-2. export LAST_FM_USERNAME="my_username"
