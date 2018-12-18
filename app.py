@@ -3,22 +3,22 @@ from flask import Flask, request, render_template
 from datetime import datetime
 
 import os
-import git
+# import git
 import requests
 
 app = Flask(__name__)
 
 @app.context_processor
 def load():
-    g = git.Git('.')
-    commits = [i for i in g.log().split('commit') if i ]
-    s = commits[0].split("Date:")[-1].strip().split(" -")[0]
-    updated = " ".join(s.split(" ")[:3])
-    updated += " " + s.split(" ")[-1]
+    # g = git.Git('.')
+    # commits = [i for i in g.log().split('commit') if i ]
+    # s = commits[0].split("Date:")[-1].strip().split(" -")[0]
+    # updated = " ".join(s.split(" ")[:3])
+    # updated += " " + s.split(" ")[-1]
 
     return {
         'now': datetime.now(),
-        'updated': updated
+        'updated': "today"
     }
 
 
