@@ -1,10 +1,10 @@
 #! /usr/bin/env python
-
 from flask import Flask, request, render_template
 from datetime import datetime
+
+import os
 import git
 import requests
-import os
 
 app = Flask(__name__)
 
