@@ -7,7 +7,8 @@ Things to do:
 * Rebrand Github
 * Deploy
 * Update This ReadMe
-* Add logging 
+* Add logging
+* Fault tolerant music page 
 
 
 # Install Dependencies
