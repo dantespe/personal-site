@@ -8,7 +8,8 @@ Things to do:
 * Deploy
 * Update This ReadMe
 * Add logging
-* Fault tolerant music page 
+* Fault tolerant music page
+* Remove `skip_files` in favor of `.gcloudignore`
 
 
 # Install Dependencies
