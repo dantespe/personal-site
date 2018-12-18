@@ -1,7 +1,6 @@
 #! /usr/bin/env python
 
-from flask import Flask, request
-from flask import render_template
+from flask import Flask, request, render_template
 from datetime import datetime
 import git
 import requests
