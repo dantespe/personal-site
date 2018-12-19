@@ -217,7 +217,7 @@ def contact():
     # Instagram
     context['contacts'].append({
         "button": "fa-instagram",
-        "link": "https://www.instagram.com/dant____________/"
+        "link": "https://www.instagram.com/dspencer2019"
     })
 
     # Github
