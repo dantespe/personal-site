@@ -51,13 +51,13 @@
             <h2>{{ header }}</h2>
           </div>
           <div class="col-lg-4 offset-lg-1" style="margin-right: -185px">
-            <p class="text-muted"> Last updated: {{ updated }}</p>
+            <p class="text-muted"> Last updated: {{ updated.strftime("%B %d %Y")}}</p>
           </div>
         </div>
       </div>
       <hr>
       {% endif %}
-    
+
       {% block content %}
       {% endblock %}
 

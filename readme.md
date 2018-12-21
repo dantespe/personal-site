@@ -8,6 +8,7 @@ Things to do:
 * Make Website responsive to mobile
 * Write proper documentation
 * Get Domain (update github with proper url)
+* Make favicon
 
 
 # Install Dependencies

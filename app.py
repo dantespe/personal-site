@@ -6,7 +6,12 @@ import os
 import requests
 
 from pyextras.cache import Cache
-from config import NUM_ARTISTS, NUM_SONGS, LAST_FM_KEY
+from config import (
+    NUM_ARTISTS,
+    NUM_SONGS,
+    LAST_FM_KEY,
+    LAST_FM_UPDATED
+)
 
 # Use the App Engine Requests adapter. This makes sure that Requests uses
 # URLFetch.
@@ -21,7 +26,7 @@ cache = Cache()
 def load():
     return {
         'now': datetime.now(),
-        'updated': "Dec 18 2018"
+        'updated': datetime(month=12, day=21, year=2018)
     }
 
 
@@ -202,6 +207,7 @@ def update_last_fm_data(num_artists=NUM_ARTISTS, num_songs=NUM_SONGS):
         print("Failed to updated the cache for songs.")
 
     cache.add(LAST_FM_KEY, data, timeDelta=1)
+    cache.add(LAST_FM_UPDATED, datetime.now(), timeDelta=1)
 
 
 @app.route("/music")
@@ -212,7 +218,8 @@ def music():
     context = {
         'header': "My Music",
         'artists': cache.get(LAST_FM_KEY)["artists"],
-        'songs': cache.get(LAST_FM_KEY)["songs"]
+        'songs': cache.get(LAST_FM_KEY)["songs"],
+        'last_updated': cache.get(LAST_FM_UPDATED, raiseError=False)
     }
 
     return render_template("music.html", **context)
