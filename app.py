@@ -4,13 +4,18 @@ from datetime import datetime
 from settings import Settings
 import os
 import requests
-import requests_toolbelt.adapters.appengine
+
+from pyextras.cache import Cache
+from config import NUM_ARTISTS, NUM_SONGS, LAST_FM_KEY
 
 # Use the App Engine Requests adapter. This makes sure that Requests uses
 # URLFetch.
-requests_toolbelt.adapters.appengine.monkeypatch()
+if Settings.get("PRODUCTION"):
+    import requests_toolbelt.adapters.appengine
+    requests_toolbelt.adapters.appengine.monkeypatch()
 
 app = Flask(__name__)
+cache = Cache()
 
 @app.context_processor
 def load():
@@ -152,57 +157,63 @@ def projects():
     return render_template("projects.html", **context)
 
 
-@app.route("/music")
-def music():
-    NUM_ARTIST = 10
-    NUM_SONGS = 50
-
-    context = {
-        'header': "My Music",
-        'artists': [],
-        'songs': []
-    }
-
+def update_last_fm_data(num_artists=NUM_ARTISTS, num_songs=NUM_SONGS):
     endpoint = "https://ws.audioscrobbler.com/2.0"
     api_key = Settings.get("LAST_FM_API_KEY")
     username = Settings.get("LAST_FM_USERNAME")
-    print(api_key, username)
 
     params = {
         'method': 'user.gettopartists',
         'api_key': api_key,
         'user': username,
         'period': 'overall',
-        'limit': NUM_ARTIST,
+        'limit': num_artists,
         'format': 'json'
     }
 
-    response = requests.get(endpoint, params=params)
+    data = {
+        "artists": [],
+        "songs": []
+    }
     try:
+        response = requests.get(endpoint, params=params)
+
         for artist in response.json()['topartists']['artist']:
-            context['artists'].append({
+            data['artists'].append({
                 "name": artist['name'],
                 "rank": artist['@attr']['rank'],
                 "img": artist["image"][1]["#text"]
             })
     except:
-        pass
+        print("Failed to updated the cache for artists.")
 
     params['method'] = "user.gettoptracks"
-    params['limit'] = NUM_SONGS
-    response = requests.get(endpoint, params=params)
-
+    params['limit'] = num_songs
     try:
+        response = requests.get(endpoint, params=params)
         for song in response.json()['toptracks']['track']:
-            context['songs'].append({
+            data['songs'].append({
                 "title": song['name'],
                 "artist": song['artist']["name"],
                 "rank": song['@attr']['rank'],
                 "img": song["image"][1]["#text"]
             })
     except:
-        pass
-    print(response.url)
+        print("Failed to updated the cache for songs.")
+
+    cache.add(LAST_FM_KEY, data, timeDelta=1)
+
+
+@app.route("/music")
+def music():
+    if LAST_FM_KEY not in cache or cache.isExpired(LAST_FM_KEY):
+        update_last_fm_data()
+
+    context = {
+        'header': "My Music",
+        'artists': cache.get(LAST_FM_KEY)["artists"],
+        'songs': cache.get(LAST_FM_KEY)["songs"]
+    }
 
     return render_template("music.html", **context)
 
