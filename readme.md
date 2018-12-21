@@ -1,7 +1,6 @@
 # Welcome to my Personal Site
 
 Things to do:
-* Rebrand LinkedIn
 * Rebrand Github
 * Update This ReadMe
 * Add logging
@@ -10,6 +9,7 @@ Things to do:
 * Find out how to import google appengine
 * Start Blog (Two entries)
 * Make Website responsive to mobile
+* Write proper documentation
 
 
 # Install Dependencies
