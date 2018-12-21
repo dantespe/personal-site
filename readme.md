@@ -1,15 +1,13 @@
 # Welcome to my Personal Site
 
 Things to do:
-* Rebrand Github
 * Update This ReadMe
 * Add logging
-* Fault tolerant music page
 * Remove `skip_files` in favor of `.gcloudignore`
-* Find out how to import google appengine
 * Start Blog (Two entries)
 * Make Website responsive to mobile
 * Write proper documentation
+* Get Domain (update github with proper url)
 
 
 # Install Dependencies
