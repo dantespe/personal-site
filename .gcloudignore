@@ -1,2 +1,7 @@
-#!include:.gitignore
 .git/
+__pycache__
+*.pyc
+.DS_Store
+env/
+build.sh
+*.log
