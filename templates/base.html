@@ -9,38 +9,40 @@
     <!-- Bootstrap CSS -->
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
-
   </head>
   <!-- Navbar -->
-    <nav class="navbar navbar-expand-sm bg-light">
+    <nav class="navbar bg-light navbar-expand-sm navbar-template">
       <a class="navbar-brand mb-0 h1" href="{{ url_for('index') }}">Dante Spencer</a>
-
-      <div class="collapse navbar-collapse mr-auto" id="navbarSupportedContent">
-        <ul class="navbar-nav ml-auto">
-          <li class="nav-item">
-            <a class="nav-link" href="{{ url_for('index') }}"> About</a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" href="{{ url_for('resume') }}">Resume</a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" href="{{ url_for('projects') }}">Projects</a>
-          </li>
-          <li class="nav-item dropdown mr-auto">
-            <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-              Random
-            </a>
-            <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-              <a class="dropdown-item" href="{{ url_for('music') }}">Music</a>
-              <a class="dropdown-item" href="#">Coming Soon: Blog!</a>
-            </div>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" href="{{ url_for('contact') }}">Contact</a>
-          </li>
-        </ul>
+      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
+        <i class="fa fa-bars" style="font-size:36px"></i>
+      </button>
+      <div class="collapse navbar-collapse ml-auto justify-content-end order-last order-lg-0" id="navbarNavDropdown">
+          <ul class="navbar-nav">
+            <li class="nav-item">
+              <a class="nav-link" href="{{ url_for('index') }}"> About</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="{{ url_for('resume') }}">Resume</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="{{ url_for('projects') }}">Projects</a>
+            </li>
+            <li class="nav-item dropdown mr-auto">
+              <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                Random
+              </a>
+              <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                <a class="dropdown-item" href="{{ url_for('music') }}">Music</a>
+                <a class="dropdown-item" href="#">Coming Soon: Blog!</a>
+              </div>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="{{ url_for('contact') }}">Contact</a>
+            </li>
+          </ul>
       </div>
-  </nav>
+    </nav>
+    <!-- END Navbar -->
   <body>
     <div class="container-fluid">
       <br>
