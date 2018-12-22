@@ -228,7 +228,7 @@ def music():
         'header': "My Music",
         'artists': cache.get(LAST_FM_KEY)["artists"],
         'songs': cache.get(LAST_FM_KEY)["songs"],
-        'last_updated': cache.get(LAST_FM_UPDATED, raiseError=False)
+        'updated': cache.get(LAST_FM_UPDATED, raiseError=False)
     }
 
     return render_template("music.html", **context)
