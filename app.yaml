@@ -2,12 +2,6 @@ runtime: python27
 api_version: 1
 threadsafe: true
 
-skip_files:
-  - "env/"
-  - "__pycache__/"
-  - "app.pyc"
-  - "settings.pyc"
-
 env_variables:
   FLASK_APP: "app.py"
 
