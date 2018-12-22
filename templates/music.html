@@ -4,48 +4,43 @@
 
 {% block content %}
   <h3 class="text-center">Top Artists</h3>
-
-  <div class="container">
-    <table class="table">
-      <thead class="thead-dark">
-          <th>Rank</th>
-          <th>Artist</th>
-          <th>Picture</th>
-      </thead>
-      <tbody>
-        {% for artist in artists %}
-        <tr>
-          <th>{{ artist.rank }}</th>
-          <th>{{artist.name }}</th>
-          <th><img src="{{ artist.img}}" alt="{{ artist.name }}"></th>
-        </tr>
-        {% endfor %}
-      </tbody>
-    </table>
-  </div>
+  <table class="table">
+    <thead class="thead-dark">
+        <th>Rank</th>
+        <th>Artist</th>
+        <th>Picture</th>
+    </thead>
+    <tbody>
+      {% for artist in artists %}
+      <tr>
+        <th>{{ artist.rank }}</th>
+        <th>{{artist.name }}</th>
+        <th><img src="{{ artist.img}}" alt="{{ artist.name }}"></th>
+      </tr>
+      {% endfor %}
+    </tbody>
+  </table>
 
   <br>
 
   <h3 class="text-center">Top Songs</h3>
-  <div class="container">
-    <table class="table">
-      <thead class="thead-dark">
-          <th>Rank</th>
-          <th>Title</th>
-          <th>Artist</th>
-          <th>Picture</th>
-      </thead>
-      <tbody>
-        {% for song in songs %}
-        <tr>
-          <th>{{ song.rank }}</th>
-          <th>{{ song.title }}</th>
-          <th>{{ song.artist }}</th>
-          <th><img src="{{ song.img}}" alt="{{ song.title }}"></th>
-        </tr>
-        {% endfor %}
-      </tbody>
-    </table>
+  <table class="table">
+    <thead class="thead-dark">
+        <th>Rank</th>
+        <th>Title</th>
+        <th>Artist</th>
+        <th>Picture</th>
+    </thead>
+    <tbody>
+      {% for song in songs %}
+      <tr>
+        <th>{{ song.rank }}</th>
+        <th>{{ song.title }}</th>
+        <th>{{ song.artist }}</th>
+        <th><img src="{{ song.img}}" alt="{{ song.title }}"></th>
+      </tr>
+      {% endfor %}
+    </tbody>
+  </table>
 
-  </div>
 {% endblock %}

@@ -3,14 +3,14 @@
 {% block content %}
   <div class="container">
     <div class="row">
-      <div class="col">
-        <img class="image-fluid rounded" width=169 height=256 src="{{ url_for('static', filename='profile.jpg')}}"></img>
-      </div>
-
-      <div class="col" style="margin-left: -600px; top: 10px">
+      <div class="col-sm-8">
+      <!-- <div class="col" style="margin-left: -600px; top: 10px"> -->
         <p>Hello, everyone.</p>
         <p>My name is Dante Spencer and I am a senior studying Computer Science at the University of Michigan.</p>
         <p>This is my website.</p>
+      </div>
+      <div class="col offset-sm-1">
+        <img class="image-fluid rounded" width=169 height=256 src="{{ url_for('static', filename='profile.jpg')}}"></img>
       </div>
     </div>
   </div>

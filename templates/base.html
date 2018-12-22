@@ -12,7 +12,7 @@
 
   </head>
   <!-- Navbar -->
-    <nav class="navbar navbar-expand-lg bg-light">
+    <nav class="navbar navbar-expand-sm bg-light">
       <a class="navbar-brand mb-0 h1" href="{{ url_for('index') }}">Dante Spencer</a>
 
       <div class="collapse navbar-collapse mr-auto" id="navbarSupportedContent">
@@ -42,34 +42,24 @@
       </div>
   </nav>
   <body>
-    <div style="margin-left: 25px; margin-right: 25px;">
+    <div class="container-fluid">
       <br>
       {% if error is not defined or not error %}
-      <div class="container">
         <div class="row">
-          <div class="col" style="margin-left: -60px">
+          <div class="col">
             <h2>{{ header }}</h2>
           </div>
-          <div class="col-lg-4 offset-lg-1" style="margin-right: -185px">
+          <div class="col-sm-3 offset-sm-3">
             <p class="text-muted"> Last updated: {{ updated.strftime("%B %d %Y")}}</p>
           </div>
         </div>
-      </div>
       <hr>
       {% endif %}
 
       {% block content %}
       {% endblock %}
+    </div>
 
-      <!-- footer -->
-      <!-- <div class="container">
-        <hr>
-          <div class="text-center center-block">
-              <p class="text-muted">© Copyright {{ now.year }} | Dante Spencer </p>
-              <p class="text-muted"> Last Updated: {{ updated}} </p>
-          </div>
-      </div>
-    </div> -->
 
     <!-- Bootstrap JS -->
     <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>

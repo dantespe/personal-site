@@ -4,15 +4,15 @@
 {% block content %}
   {% for job in jobs %}
   <div class="row justify-content-start no-gutters" style="padding: 8px 0px 8px 0px">
-    <div class="col-lg-7">
+    <div class="col-sm-7">
       <p class="font-weight-bold">{{ job.title }} | {% if job.department is defined and job.department %} {{ job.department }} at {% endif %} {{ job.company }}</p>
     </div>
-    <div class="col-lg-2 offset-lg-3">
+    <div class="col-sm-2 offset-sm-3">
       {{ job.timeline }}
     </div>
   </div>
   <div class="row justify-content-start no-gutters">
-    <div class="col-lg-10" style="padding: 0px 10px 10px 10px">
+    <div class="col-sm-10" style="padding: 0px 10px 10px 10px">
       {% if job.points is not defined or not job.points %}TBA{% else %}
         <ul>
           {% for bullet in job.points %}
@@ -26,15 +26,15 @@
 
   <h4>Education</h4>
   <div class="row justify-content-start no-gutters">
-    <div class="col-lg-7">
+    <div class="col-sm-7">
       <p class="font-weight-bold"> University of Michigan -- Ann Arbor </p>
     </div>
-    <div class="col-lg-1 offset-lg-4">
-      2019
+    <div class="col offset-sm-4">
+      <p>2019</p>
     </div>
   </div>
   <div class="row justify-content-start no-gutters" style=" margin-top: -20px">
-    <div class="col-lg-7">
+    <div class="col-sm-7">
       <p> Bachelor of Science Engineering in Computer Science </p>
     </div>
   </div>
