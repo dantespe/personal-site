@@ -22,9 +22,10 @@ itsdangerous==1.1.0
 Jinja2==2.10
 MarkupSafe==1.1.0
 protobuf==3.6.1
+pyaes==1.6.1
 pyasn1==0.4.4
 pyasn1-modules==0.2.2
-pyextras==0.0.1b
+pyextras==0.0.6
 pytz==2018.7
 requests==2.21.0
 requests-toolbelt==0.8.0
