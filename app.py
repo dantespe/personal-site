@@ -2,6 +2,7 @@
 from flask import Flask, request, render_template
 from datetime import datetime
 from settings import Settings
+import logging
 import os
 import requests
 
@@ -13,11 +14,17 @@ from config import (
     LAST_FM_UPDATED
 )
 
+logging.basicConfig(filename="app.log")
+logger = logging
+
 # Use the App Engine Requests adapter. This makes sure that Requests uses
 # URLFetch.
 if Settings.get("PRODUCTION"):
+    logger.info("Starting application in PRODUCTION Environment")
     import requests_toolbelt.adapters.appengine
     requests_toolbelt.adapters.appengine.monkeypatch()
+else:
+    logger.info("Starting application in DEVELOPMENT Environment")
 
 app = Flask(__name__)
 cache = Cache()
@@ -32,6 +39,8 @@ def load():
 
 @app.errorhandler(404)
 def page_not_found(e):
+    logger.info("[404] %s" % (request.base_url,))
+
     context = {
         'error': True,
         'url': request.base_url
@@ -190,7 +199,7 @@ def update_last_fm_data(num_artists=NUM_ARTISTS, num_songs=NUM_SONGS):
                 "img": artist["image"][1]["#text"]
             })
     except:
-        print("Failed to updated the cache for artists.")
+        logger.error("Failed to update the cache for artists.")
 
     params['method'] = "user.gettoptracks"
     params['limit'] = num_songs
@@ -204,7 +213,7 @@ def update_last_fm_data(num_artists=NUM_ARTISTS, num_songs=NUM_SONGS):
                 "img": song["image"][1]["#text"]
             })
     except:
-        print("Failed to updated the cache for songs.")
+        logger.error("Failed to update the cache for songs.")
 
     cache.add(LAST_FM_KEY, data, timeDelta=1)
     cache.add(LAST_FM_UPDATED, datetime.now(), timeDelta=1)
