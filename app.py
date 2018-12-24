@@ -283,5 +283,4 @@ def photos():
         })
         files = os.listdir(os.path.join('static', 'photos', name))
         context['collections'][-1]['photos'] = ["photos/%s/%s" % (name, filename,) for filename in files]
-    print(context)
     return render_template("photos.html", **context)
