@@ -272,15 +272,15 @@ def contact():
 def photos():
     context = {
         'header': "Photos",
-        'collections': []
+        'collections': [{
+            "name": "St. Louis 2018",
+            "prefix": "photos/St._Louis_2018/",
+            "photos": ["stl_arch.jpg", "stl_ballpark_inside.jpg", "stl_ballpark_outside.jpg"]
+        }, {
+            "name": "Chicago 2017",
+            "prefix": "photos/Chicago_2017/",
+            "photos": ["chi_downtown_night.JPG","chi_skyline_1.JPG","chi_skyline_2.JPG","chi_skyline_3.JPG"]
+        }
+        ]
     }
-
-    collection_names = ["St._Louis_2018", "Chicago_2017"]
-    for name in collection_names:
-        context['collections'].append({
-            'name': name.replace("_", " "),
-            'photos': []
-        })
-        files = os.listdir(os.path.join('static', 'photos', name))
-        context['collections'][-1]['photos'] = ["photos/%s/%s" % (name, filename,) for filename in files]
     return render_template("photos.html", **context)

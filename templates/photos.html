@@ -9,9 +9,10 @@
 </div>
 <div class="row">
   {% for i in collection.photos %}
-
   <div class="col-sm-3">
-    <img class="img-fluid img-thumbnail border-dark" src="{{ url_for('static', filename=i)}}" width=200 height=200>
+    <a class="link" href={{ url_for('static', filename=collection.prefix + i) }}>
+      <img class="img-fluid" height=300 width=300 src={{ url_for('static', filename=collection.prefix + i) }}></img>
+    </a>
   </div>
   {% endfor %}
 </div>
