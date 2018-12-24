@@ -266,3 +266,22 @@ def contact():
     })
 
     return render_template("contact.html", **context)
+
+
+@app.route('/photos')
+def photos():
+    context = {
+        'header': "Photos",
+        'collections': []
+    }
+
+    collection_names = ["St._Louis_2018", "Chicago_2017"]
+    for name in collection_names:
+        context['collections'].append({
+            'name': name.replace("_", " "),
+            'photos': []
+        })
+        files = os.listdir(os.path.join('static', 'photos', name))
+        context['collections'][-1]['photos'] = ["photos/%s/%s" % (name, filename,) for filename in files]
+    print(context)
+    return render_template("photos.html", **context)
