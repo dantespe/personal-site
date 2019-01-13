@@ -1,7 +1,6 @@
 #! /usr/bin/env python
 from flask import Flask, request, render_template
-from datetime import datetime
-from settings import Settings
+from datetime import datetime, timedelta
 import logging
 import os
 import requests
@@ -19,7 +18,7 @@ logger = logging
 
 # Use the App Engine Requests adapter. This makes sure that Requests uses
 # URLFetch.
-if Settings.get("PRODUCTION"):
+if os.environ.get("SITE_STATE", False):
     logger.info("Starting application in PRODUCTION Environment")
     import requests_toolbelt.adapters.appengine
     requests_toolbelt.adapters.appengine.monkeypatch()
@@ -173,8 +172,8 @@ def projects():
 
 def update_last_fm_data(num_artists=NUM_ARTISTS, num_songs=NUM_SONGS):
     endpoint = "https://ws.audioscrobbler.com/2.0"
-    api_key = Settings.get("LAST_FM_API_KEY")
-    username = Settings.get("LAST_FM_USERNAME")
+    api_key = os.environ.get("LAST_FM_API_KEY")
+    username = os.environ.get("LAST_FM_USERNAME")
 
     params = {
         'method': 'user.gettopartists',
@@ -215,8 +214,8 @@ def update_last_fm_data(num_artists=NUM_ARTISTS, num_songs=NUM_SONGS):
     except:
         logger.error("Failed to update the cache for songs.")
 
-    cache.add(LAST_FM_KEY, data, timeDelta=1)
-    cache.add(LAST_FM_UPDATED, datetime.now(), timeDelta=1)
+    cache.add(LAST_FM_KEY, data, timedelta=timedelta(hours=24))
+    cache.add(LAST_FM_UPDATED, datetime.now(), timedelta=timedelta(days=1))
 
 
 @app.route("/music")
