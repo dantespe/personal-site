@@ -5,3 +5,4 @@ env/
 build.sh
 lib/
 *.log
+app.yaml
