@@ -214,7 +214,7 @@ def update_last_fm_data(num_artists=NUM_ARTISTS, num_songs=NUM_SONGS):
     except:
         logger.error("Failed to update the cache for songs.")
 
-    cache.add(LAST_FM_KEY, data, timedelta=timedelta(hours=24))
+    cache.add(LAST_FM_KEY, data, timedelta=timedelta(days=1))
     cache.add(LAST_FM_UPDATED, datetime.now(), timedelta=timedelta(days=1))
 
 
