@@ -23,7 +23,7 @@ cache = Cache()
 def load():
     return {
         'now': datetime.now(),
-        'updated': datetime(month=12, day=21, year=2018)
+        'updated': datetime(month=2, day=10, year=2019)
     }
 
 
