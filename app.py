@@ -16,15 +16,6 @@ from config import (
 logging.basicConfig(filename="app.log")
 logger = logging
 
-# Use the App Engine Requests adapter. This makes sure that Requests uses
-# URLFetch.
-if os.environ.get("SITE_STATE", False):
-    logger.info("Starting application in PRODUCTION Environment")
-    import requests_toolbelt.adapters.appengine
-    requests_toolbelt.adapters.appengine.monkeypatch()
-else:
-    logger.info("Starting application in DEVELOPMENT Environment")
-
 app = Flask(__name__)
 cache = Cache()
 
