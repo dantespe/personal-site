@@ -29,7 +29,7 @@ pyextras==0.0.7
 pytz==2018.7
 requests==2.21.0
 requests-toolbelt==0.8.0
-rsa==4.0
+rsa==4.1
 six==1.12.0
 smmap==0.9.0
 smmap2==2.0.5
